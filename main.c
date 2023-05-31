@@ -38,6 +38,9 @@ char *readLine() {
         empty[0] = '\0';
         return empty;
     } else {
+        if(strlen(line) != 1 || line[0] == '\n') {
+            line[strlen(line) - 1] = '\0';
+        }
         return line;
     }
 }
@@ -79,7 +82,7 @@ int main() {
 
         while(1) {
             char *line = readLine();
-            if(strlen(line) == 0 || (strlen(line) == 1 && line[0] == '\n')) {
+            if(strlen(line) == 0) {
                 free(line);
                 break;
             }
